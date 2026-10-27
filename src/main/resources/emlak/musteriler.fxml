@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="customerRoot" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emlak.MusterilerController" prefWidth="1000" prefHeight="700" stylesheets="@emlakyonetim.css">
+ <top><HBox alignment="CENTER_RIGHT" spacing="15" style="-fx-padding: 12; -fx-background-color: #c8e6c9;"><Label text="Müşteri Yönetimi" style="-fx-font-size: 20;"/><Button text="Kapat" onAction="#closeWindow"/></HBox></top>
+ <center><VBox spacing="10" style="-fx-padding: 15;">
+  <TextField fx:id="customerSearch" promptText="Ad, telefon, e-posta veya not ara"/>
+  <TableView fx:id="customerTable" VBox.vgrow="ALWAYS"><columns>
+   <TableColumn fx:id="nameColumn" text="Ad Soyad" prefWidth="180"/><TableColumn fx:id="phoneColumn" text="Telefon" prefWidth="150"/>
+   <TableColumn fx:id="emailColumn" text="E-posta" prefWidth="180"/><TableColumn fx:id="noteColumn" text="Not / Talep" prefWidth="230"/>
+  </columns></TableView><Label fx:id="customerStatus"/>
+ </VBox></center>
+ <right><VBox spacing="10" prefWidth="260" style="-fx-padding: 15; -fx-background-color: #e8f5e9;">
+  <Label text="Müşteri Bilgileri" style="-fx-font-size: 18;"/>
+  <Label text="Ad Soyad *"/><TextField fx:id="nameField"/>
+  <Label text="Telefon *"/><TextField fx:id="phoneField"/>
+  <Label text="E-posta"/><TextField fx:id="emailField"/>
+  <Label text="Not / Aranan Emlak"/><TextArea fx:id="noteField" wrapText="true" prefRowCount="6"/>
+  <Button text="Yeni Müşteri / Formu Temizle" onAction="#newCustomer" maxWidth="Infinity"/>
+  <Button text="Kaydet / Güncelle" onAction="#saveCustomer" maxWidth="Infinity"/>
+  <Button text="Seçili Müşteriyi Sil" onAction="#deleteCustomer" maxWidth="Infinity"/>
+ </VBox></right>
+</BorderPane>

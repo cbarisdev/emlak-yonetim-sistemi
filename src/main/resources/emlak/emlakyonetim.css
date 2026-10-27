@@ -1,0 +1,105 @@
+/* Genel Font Ayarları */
+.root {
+    -fx-font-family: "Segoe UI", sans-serif;
+}
+
+/* Accordion (Sol ve Sağ Menü) */
+.accordion {
+    -fx-background-color: #f8f9fa;
+    -fx-border-color: #ced4da;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+    -fx-padding: 10;
+}
+
+/* TitledPane Temel Stil */
+.titled-pane > .title {
+    -fx-background-color: #e9ecef;
+    -fx-text-fill: #495057;
+    -fx-font-weight: bold;
+    -fx-font-size: 14px;
+    -fx-padding: 8 10;
+    -fx-border-color: #ced4da;
+    -fx-border-width: 0 0 1 0;
+}
+
+/* TitledPane hover efekti */
+.titled-pane > .title:hover {
+    -fx-background-color: #dee2e6;
+}
+
+/* TitledPane Expanded durumunda başlık arka planı */
+.titled-pane:expanded > .title {
+    -fx-background-color: #dee2e6;
+    -fx-font-weight: bold;
+    -fx-text-fill: #212529;
+}
+
+/* ListView Stil */
+.list-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}
+
+.list-cell {
+    -fx-text-fill: #212529;
+    -fx-font-size: 13px;
+    -fx-padding: 8;
+}
+
+/* ListCell hover efekti */
+.list-cell:hover {
+    -fx-background-color: #e2e6ea;
+}
+
+/* Seçili hücre rengi */
+.list-cell:selected {
+    -fx-background-color: #b8daff;
+    -fx-text-fill: #212529;
+}
+
+/* Üst Çubuktaki Button'lar (Kapat, Simge Durumu) */
+.button {
+    -fx-background-color: #c8e6c9;
+    -fx-text-fill: #173a24;
+    -fx-background-radius: 5;
+    -fx-padding: 7 12;
+    -fx-cursor: hand;
+}
+
+/* Hover durumunda üst çubuk butonları */
+.button:hover {
+    -fx-background-color: #28a745;
+    -fx-text-fill: #ffffff;
+}
+
+/* Kapat butonunda hover efekti farklı renk */
+#closeButton:hover {
+    -fx-background-color: #dc3545;
+    -fx-text-fill: #ffffff;
+}
+
+/* Minimize butonunda hover efekti */
+#minimizeButton:hover {
+    -fx-background-color: #ffc107;
+    -fx-text-fill: #212529;
+}
+
+/* İçerik Alanı */
+#contentArea {
+    -fx-background-color: #f1f3f5;
+    -fx-padding: 10;
+    -fx-border-color: #ced4da;
+    -fx-border-width: 1;
+    -fx-border-radius: 5;
+}
+
+/* Result ListView */
+#resultListView {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ced4da;
+    -fx-border-radius: 5;
+    -fx-padding: 5;
+}

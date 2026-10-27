@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.String?>
+<?import javafx.collections.FXCollections?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.canvas.Canvas?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="formRoot" stylesheets="@emlakyonetim.css" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emlak.VeriEkleGuncelleController">
+
+    <!-- Üst Başlık Çubuğu -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-padding: 10; -fx-background-color: #c8e6c9;">
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Veri Ekle / Güncelle" />
+                <Button fx:id="minimizeButton" onAction="#minimizeWindow" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 18px; -fx-font-weight: bold;" text="_" />
+                <Button fx:id="closeButton" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 18px; -fx-font-weight: bold;" text="X" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Ana İçerik -->
+    <center>
+        <ScrollPane fitToHeight="false" fitToWidth="true" prefWidth="859.0">
+            <content>
+                <VBox spacing="20">
+                    <padding>
+                        <Insets bottom="20" left="20" right="20" top="20" />
+                    </padding>
+
+                    <!-- İlan Bilgileri -->
+                    <GridPane hgap="10" vgap="10">
+                        <padding>
+                            <Insets bottom="10" left="10" right="10" top="10" />
+                        </padding>
+
+                        <!-- İlan Başlığı -->
+                        <Label text="İlan Başlığı:" GridPane.rowIndex="1" />
+                        <TextField fx:id="ilanBasligiField" promptText="İlan Başlığını Girin" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+
+                        <!-- Metrekare -->
+                        <Label text="Metrekare:" GridPane.rowIndex="2" />
+                        <TextField fx:id="metrekareField" promptText="Metrekare Girin" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+
+                        <!-- Oda Sayısı -->
+                        <Label text="Oda Sayısı:" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="odaSayisiComboBox" promptText="Oda Sayısı Seçin" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="1+1" />
+                                    <String fx:value="1.5+1" />
+                                    <String fx:value="2+0" />
+                                    <String fx:value="2+1" />
+                                    <String fx:value="2.5+1" />
+                                    <String fx:value="2+2" />
+                                    <String fx:value="3+0" />
+                                    <String fx:value="3+1" />
+                                    <String fx:value="3.5+1" />
+                                    <String fx:value="3+2" />
+                                    <String fx:value="3+3" />
+                                    <String fx:value="4+0" />
+                                    <String fx:value="4+1" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+
+                        <!-- Fiyat -->
+                        <Label text="Fiyat (TL):" GridPane.rowIndex="4" />
+                        <TextField fx:id="fiyatField" promptText="Fiyat Girin" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+
+                        <!-- İlçe -->
+                        <Label text="İlçe:" GridPane.rowIndex="5" />
+                        <ComboBox fx:id="ilceComboBox" prefHeight="25.0" prefWidth="148.0" promptText="İlçe Seçin" GridPane.columnIndex="1" GridPane.rowIndex="5">
+                            <items>
+                                <FXCollections fx:factory="observableArrayList">
+                                    <String fx:value="Akçadağ" />
+                                    <String fx:value="Arapgir" />
+                                    <String fx:value="Arguvan" />
+                                    <String fx:value="Battalgazi" />
+                                    <String fx:value="Darende" />
+                                    <String fx:value="Doğanşehir" />
+                                    <String fx:value="Doğanyol" />
+                                    <String fx:value="Hekimhan" />
+                                    <String fx:value="Kale" />
+                                    <String fx:value="Kuluncak" />
+                                    <String fx:value="Pütürge" />
+                                    <String fx:value="Yazıhan" />
+                                    <String fx:value="Yeşilyurt" />
+                                </FXCollections>
+                            </items>
+                        </ComboBox>
+                  <Label text="Adres:" GridPane.rowIndex="6" /><TextField fx:id="adresField" prefHeight="25.0" prefWidth="438.0" promptText="Adres" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+                  <Label text="İlan Türü:" />
+                  <HBox spacing="30" GridPane.columnIndex="1">
+                     <children>
+                        <CheckBox fx:id="kiralikcheck" mnemonicParsing="false" text="Kiralık" />
+                        <CheckBox fx:id="satilikcheck" mnemonicParsing="false" text="Satılık" />
+                     </children>
+                  </HBox>
+
+
+                  <columnConstraints>
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                     <ColumnConstraints />
+                  </columnConstraints>
+                  <rowConstraints>
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                     <RowConstraints />
+                  </rowConstraints>
+                    </GridPane>
+                    <VBox spacing="10">
+                  <TitledPane expanded="false" text="Tür">
+                     <content>
+                        <VBox>
+                           <children>
+                               <fx:define>
+                                   <ToggleGroup fx:id="turToggleGroup" />
+                               </fx:define>
+                                      <TitledPane expanded="false" text="Konut">
+                                          <content>
+                                              <VBox spacing="5">
+                                                  <padding>
+                                                      <Insets bottom="10" left="10" right="10" top="10" />
+                                                  </padding>
+                                                  <children>
+                                                      <RadioButton fx:id="konutVilla" text="Villa" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutMustakilEv" text="Müstakil Ev" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutDaire" text="Daire" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutRezidans" text="Rezidans" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutArsa" text="Arsa" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutTarla" text="Tarla" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="konutBahce" text="Bahçe" toggleGroup="$turToggleGroup" />
+                                                  </children>
+                                              </VBox>
+                                          </content>
+                                      </TitledPane>
+                                      <TitledPane expanded="false" text="İş Yeri">
+                                          <content>
+                                              <VBox spacing="5">
+                                                  <padding>
+                                                      <Insets bottom="10" left="10" right="10" top="10" />
+                                                  </padding>
+                                                  <children>
+                                                      <RadioButton fx:id="isYeriAkaryakitistasyonu" text="Akaryakıt İstasyonu" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriApartmandairesi" text="Apartman Dairesi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriAtolye" text="Atölye" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriAVM" text="AVM" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriBufe" text="Büfe" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriBuroOfis" text="Büro ve Ofis" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriCafeBar" text="Cafe ve Bar" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriCiftlik" text="Çiftlik" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriDepoAntrepo" text="Depo ve Antrepo" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriDugunsalonu" text="Düğün Salonu" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriDukkanMagaza" text="Dükkan ve Mağaza" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriEnerjisantrali" text="Enerji Santrali" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriFabrikaUretimtesisi" text="Fabrika ve Üretim Tesisi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriGarajParkyeri" text="Garaj ve Park Yeri" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriImalathane" text="İmalathane" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriIshanikatiofisi" text="İş Hanı Katı ve Ofisi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriKantin" text="Kantin" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriKirkahvaltiBahcesi" text="Kır ve Kahvaltı Bahçesi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriKiraathane" text="Kıraathane" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriKomplebina" text="Komple Bina" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriMadenocagi" text="Maden Ocağı" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriOtoparkGaraj" text="Otopark / Garaj" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriOtoyikamaKuafor" text="Oto Yıkama ve Kuaför" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriPastaneFirintatlici" text="Pastane, Fırın ve Tatlıcı" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriPazaryeri" text="Pazar Yeri" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriPlaza" text="Plaza" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriPlazakatiofisi" text="Plaza Katı ve Ofisi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriRadyoTVkanali" text="Radyo İstasyonu ve TV Kanalı" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriRestoranLokanta" text="Restoran ve Lokanta" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriRezidanskatiofisi" text="Rezidans Katı ve Ofisi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriSaglikmerkezi" text="Sağlık Merkezi" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriSinemaKonferanssalonu" text="Sinema ve Konferans Salonu" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriSPAHamamSauna" text="SPA, Hamam ve Sauna" toggleGroup="$turToggleGroup" />
+                                                      <RadioButton fx:id="isYeriSportesisi" text="Spor Tesisi" toggleGroup="$turToggleGroup" />
+                                                  </children>
+                                              </VBox>
+                                          </content>
+                                      </TitledPane>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+                  <TitledPane expanded="false" text="Resim">
+                     <content>
+                        <VBox alignment="CENTER" spacing="5">
+                           <children>
+                              <Canvas fx:id="canvasResim" height="384.0" width="512.0" />
+<HBox spacing="8"><Button text="Önceki" onAction="#previousImage"/><Button text="Sonraki" onAction="#nextImage"/><Button text="Resimleri kaldır" onAction="#clearImages"/></HBox>
+<TextField fx:id="resim1Field" promptText="Resim 1 (isteğe bağlı)" editable="false" />
+<TextField fx:id="resim2Field" promptText="Resim 2 (isteğe bağlı)" editable="false" />
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" text="&lt;" />
+                                    <Button mnemonicParsing="false" text="&gt;" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="btnResim" mnemonicParsing="false" onAction="#btnResim" text="Resim ekle" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </content>
+                  </TitledPane>
+
+                        <!-- Bina Yaşı Filtreleri -->
+                        <TitledPane expanded="false" text="Bina Yaşı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="binaYasi0" text="0" />
+                                        <CheckBox fx:id="binaYasi1" text="1" />
+                                        <CheckBox fx:id="binaYasi2" text="2" />
+                                        <CheckBox fx:id="binaYasi3" text="3" />
+                                        <CheckBox fx:id="binaYasi4" text="4" />
+                                        <CheckBox fx:id="binaYasi5Plus" text="5+" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Bulunduğu Kat Filtreleri -->
+                        <TitledPane expanded="false" text="Bulunduğu Kat">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="bkBodrum" text="Bodrum Katı" />
+                                        <CheckBox fx:id="bkZemin" text="Zemin Katı" />
+                                        <CheckBox fx:id="bkBahceKati" text="Bahçe Katı" />
+                                        <CheckBox fx:id="bkGirisKati" text="Giriş Katı" />
+                                        <CheckBox fx:id="bkMustakil" text="Müstakil Katı" />
+                                        <CheckBox fx:id="bkCatiKati" text="Çatı Katı" />
+                                        <CheckBox fx:id="bk1" text="1" />
+                                        <CheckBox fx:id="bk2" text="2" />
+                                        <CheckBox fx:id="bk3" text="3" />
+                                        <CheckBox fx:id="bk4" text="4" />
+                                        <CheckBox fx:id="bk5" text="5" />
+                                        <CheckBox fx:id="bk6" text="6" />
+                                        <CheckBox fx:id="bk7" text="7" />
+                                        <CheckBox fx:id="bk8" text="8" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Kat Sayısı Filtreleri -->
+                        <TitledPane expanded="false" text="Kat Sayısı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="ks1" text="1" />
+                                        <CheckBox fx:id="ks2" text="2" />
+                                        <CheckBox fx:id="ks3" text="3" />
+                                        <CheckBox fx:id="ks4" text="4" />
+                                        <CheckBox fx:id="ks5" text="5" />
+                                        <CheckBox fx:id="ks6" text="6" />
+                                        <CheckBox fx:id="ks7" text="7" />
+                                        <CheckBox fx:id="ks8" text="8" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Isıtma Filtreleri -->
+                        <TitledPane expanded="false" text="Isıtma">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="isitmaYOK" text="Yok" />
+                                        <CheckBox fx:id="isitmaSoba" text="Soba" />
+                                        <CheckBox fx:id="isitmaDogalgazSobasi" text="Doğalgaz Sobası" />
+                                        <CheckBox fx:id="isitmaKatKaloriferi" text="Kat Kaloriferi" />
+                                        <CheckBox fx:id="isitmaMerkezi" text="Merkezi" />
+                                        <CheckBox fx:id="isitmaKombiDogalgaz" text="Kombi (Doğalgaz)" />
+                                        <CheckBox fx:id="isitmaKombiElektrik" text="Kombi (Elektrik)" />
+                                        <CheckBox fx:id="isitmaYerden" text="Yerden Isıtma" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Banyo Sayısı Filtreleri -->
+                        <TitledPane expanded="false" text="Banyo Sayısı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="bs1" text="1" />
+                                        <CheckBox fx:id="bs2" text="2" />
+                                        <CheckBox fx:id="bs3" text="3" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Mutfak Filtreleri -->
+                        <TitledPane expanded="false" text="Mutfak">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="mutfakA" text="Açık (Amerikan)" />
+                                        <CheckBox fx:id="mutfakK" text="Kapalı" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Balkon Filtreleri -->
+                        <TitledPane expanded="false" text="Balkon">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="balkonV" text="Var" />
+                                        <CheckBox fx:id="balkonY" text="Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Asansör Filtreleri -->
+                        <TitledPane expanded="false" text="Asansör">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="asansorV" text="Var" />
+                                        <CheckBox fx:id="asansorY" text="Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Eşyalı Filtreleri -->
+                        <TitledPane expanded="false" text="Eşyalı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="esyaliE" text="Evet" />
+                                        <CheckBox fx:id="esyaliH" text="Hayır" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Kullanım Durumu Filtreleri -->
+                        <TitledPane expanded="false" text="Kullanım Durumu">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="kdb" text="Boş" />
+                                        <CheckBox fx:id="kdK" text="Kiracılı" />
+                                        <CheckBox fx:id="kdM" text="Mülk Sahibi" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Site İçerisinde Filtreleri -->
+                        <TitledPane expanded="false" text="Site İçerisinde">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="siE" text="Evet" />
+                                        <CheckBox fx:id="siH" text="Hayır" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Tapu Durumu Filtreleri -->
+                        <TitledPane expanded="false" text="Tapu Durumu">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="tdKatMulkiyeti" text="Kat Mülkiyeti" />
+                                        <CheckBox fx:id="tdHisseliTapu" text="Hisseli Tapu" />
+                                        <CheckBox fx:id="tdArsaTapulu" text="Arsa Tapulu" />
+                                        <CheckBox fx:id="tdYurtDisiTapulu" text="Yurt Dışı Tapulu" />
+                                        <CheckBox fx:id="tdTapuKaydiYok" text="Tapu Kaydı Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <!-- Kimden Filtreleri -->
+                        <TitledPane expanded="false" text="Kimden">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <fx:define>
+                                        <ToggleGroup fx:id="kimdenToggleGroup" />
+                                    </fx:define>
+                                    <children>
+                                        <RadioButton fx:id="kimdenSahibinden" text="Sahibinden" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenInsaatFirmasindan" text="İnşaat Firmasından" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenBankadan" text="Bankadan" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenTurizmIsletmesinden" text="Turizm İşletmesinden" toggleGroup="$kimdenToggleGroup" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                    </VBox>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+    <!-- Alt Butonlar -->
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding>
+                <Insets bottom="10" left="10" right="10" top="10" />
+            </padding>
+            <Button onAction="#handleCancel" style="-fx-background-color: #e57373; -fx-text-fill: white;" text="İptal" />
+            <Button onAction="#handleSave" style="-fx-background-color: #81c784; -fx-text-fill: white;" text="Kaydet" />
+
+        </HBox>
+    </bottom>
+
+</BorderPane>
+
+

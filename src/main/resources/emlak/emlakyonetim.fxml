@@ -1,0 +1,385 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Accordion?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="mainRoot" prefHeight="600.0" prefWidth="1000.0" stylesheets="@emlakyonetim.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emlak.EmlakYonetimController">
+
+    <!-- Üst Başlık Çubuğu -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-padding: 10; -fx-background-color: #c8e6c9;" BorderPane.alignment="CENTER">
+            <children>
+                <Button disable="true" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Emlak Yönetim Sistemi" />
+                <Button fx:id="minimizeButton" onAction="#minimizeWindow" style="-fx-background-color: transparent; -fx-text-fill: #173a24; -fx-font-size: 18px; -fx-font-weight: bold;" text="_" />
+                <Button fx:id="closeButton" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold;" text="X" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Sol Menü (Accordion) -->
+    <left><VBox spacing="8" prefWidth="220" style="-fx-padding: 12; -fx-background-color: #e8f5e9;">
+ <Label text="Kategoriler" style="-fx-font-size: 18; -fx-font-weight: bold;" />
+ <Accordion fx:id="leftAccordion" VBox.vgrow="ALWAYS"><panes>
+  <TitledPane text="Konut / Satılık"><ListView fx:id="konutSatilikList" /></TitledPane>
+  <TitledPane text="Konut / Kiralık"><ListView fx:id="konutKiralikList" /></TitledPane>
+  <TitledPane text="İş Yeri / Satılık"><ListView fx:id="isYeriSatilikList" /></TitledPane>
+  <TitledPane text="İş Yeri / Kiralık"><ListView fx:id="isYeriKiralikList" /></TitledPane>
+ </panes></Accordion>
+ <Button text="Ara" onAction="#btnAra" maxWidth="Infinity" />
+ <Button text="Filtreleri Temizle" onAction="#btnTemizle" maxWidth="Infinity" />
+ <Button text="Ekle" onAction="#btnEkle" maxWidth="Infinity" />
+ <Button text="Güncelle" onAction="#btnGuncelle" maxWidth="Infinity" />
+ <Button text="Sil" onAction="#btnSil" maxWidth="Infinity" />
+ <Button text="Detaylı Bilgi" onAction="#btnBilgi" maxWidth="Infinity" />
+ <Button text="Müşteriler" onAction="#btnMusteriler" maxWidth="Infinity" />
+ <Button text="Tümünü Kaydet" onAction="#btnKaydet" maxWidth="Infinity" />
+</VBox></left>
+
+    <!-- İçerik Alanı -->
+    <center><VBox spacing="10" style="-fx-padding: 12;"><HBox spacing="10"><TextField fx:id="searchField" promptText="Başlık, adres veya ilçe ara" onAction="#btnAra" HBox.hgrow="ALWAYS" /><ComboBox fx:id="sortBox" prefWidth="200" /></HBox><TableView fx:id="resultTableView" VBox.vgrow="ALWAYS"><columns>
+                        <TableColumn fx:id="ilanBasligiColumn" prefWidth="150" text="İlan Başlığı" />
+                        <TableColumn fx:id="metrekareColumn" prefWidth="100" text="Metrekare" />
+                        <TableColumn fx:id="odaSayisiColumn" prefWidth="100" text="Oda Sayısı" />
+                        <TableColumn fx:id="fiyatColumn" prefWidth="100" text="Fiyat" />
+                        <TableColumn fx:id="ilanTarihiColumn" prefWidth="150" text="İlan Tarihi" />
+                        <TableColumn fx:id="ilceColumn" prefWidth="100" text="İlçe" />
+                    </columns></TableView><Label fx:id="statusLabel" text="" wrapText="true" /></VBox></center>
+
+    <!-- Sağ Menü (Accordion) -->
+    <right><ScrollPane fitToWidth="true" prefWidth="270" hbarPolicy="NEVER"><content><Accordion fx:id="rightAccordion">
+                    <panes>
+                        <TitledPane text="Adres">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="adresAkcadag" text="Akçadağ" />
+                                        <CheckBox fx:id="adresArapgir" text="Arapgir" />
+                                        <CheckBox fx:id="adresArguvan" text="Arguvan" />
+                                        <CheckBox fx:id="adresBattalgazi" text="Battalgazi" />
+                                        <CheckBox fx:id="adresDarende" text="Darende" />
+                                        <CheckBox fx:id="adresDogansehir" text="Doğanşehir" />
+                                        <CheckBox fx:id="adresDoganyol" text="Doğanyol" />
+                                        <CheckBox fx:id="adresHekimhan" text="Hekimhan" />
+                                        <CheckBox fx:id="adresKale" text="Kale" />
+                                        <CheckBox fx:id="adresKuluncak" text="Kuluncak" />
+                                        <CheckBox fx:id="adresPuturge" text="Pütürge" />
+                                        <CheckBox fx:id="adresYazihan" text="Yazıhan" />
+                                        <CheckBox fx:id="adresYesilyurt" text="Yeşilyurt" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Fiyat">
+                            <content>
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <HBox spacing="5">
+                                            <Label text="Min:" />
+                                            <TextField fx:id="fiyatMinField" promptText="Min Fiyat" />
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Label text="Max:" />
+                                            <TextField fx:id="fiyatMaxField" promptText="Max Fiyat" />
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Metrekare">
+                            <content>
+                                <VBox spacing="10">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <HBox spacing="5">
+                                            <Label text="Min:" />
+                                            <TextField fx:id="MetrekareMinField" promptText="Min Metrekare" />
+                                        </HBox>
+                                        <HBox spacing="5">
+                                            <Label text="Max:" />
+                                            <TextField fx:id="MetrekareMaxField" promptText="Max Metrekare" />
+                                        </HBox>
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Oda Sayısı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="oda1Plus1CheckBox" text="1+1" />
+                                        <CheckBox fx:id="oda1Point5Plus1CheckBox" text="1.5+1" />
+                                        <CheckBox fx:id="oda2Plus0CheckBox" text="2+0" />
+                                        <CheckBox fx:id="oda2Plus1CheckBox" text="2+1" />
+                                        <CheckBox fx:id="oda2Point5Plus1CheckBox" text="2.5+1" />
+                                        <CheckBox fx:id="oda2Plus2CheckBox" text="2+2" />
+                                        <CheckBox fx:id="oda3Plus0CheckBox" text="3+0" />
+                                        <CheckBox fx:id="oda3Plus1CheckBox" text="3+1" />
+                                        <CheckBox fx:id="oda3Point5Plus1CheckBox" text="3.5+1" />
+                                        <CheckBox fx:id="oda3Plus2CheckBox" text="3+2" />
+                                        <CheckBox fx:id="oda3Plus3CheckBox" text="3+3" />
+                                        <CheckBox fx:id="oda4Plus0CheckBox" text="4+0" />
+                                        <CheckBox fx:id="oda4Plus1CheckBox" text="4+1" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <TitledPane text="Bina Yaşı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="BinaYasi0" text="0" />
+                                        <CheckBox fx:id="BinaYasi1" text="1" />
+                                        <CheckBox fx:id="BinaYasi2" text="2" />
+                                        <CheckBox fx:id="BinaYasi3" text="3" />
+                                        <CheckBox fx:id="BinaYasi4" text="4" />
+                                        <CheckBox fx:id="BinaYasi5Plus" text="5+" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Bulunduğu Kat">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="bkBodrum" text="Bodrum Katı" />
+                                        <CheckBox fx:id="bkZemin" text="Zemin Katı" />
+                                        <CheckBox fx:id="bkBahceKati" text="Bahçe Katı" />
+                                        <CheckBox fx:id="bkGirisKati" text="Giriş Katı" />
+                                        <CheckBox fx:id="bkMustakil" text="Müstakil Katı" />
+                                        <CheckBox fx:id="bkCatiKati" text="Çatı Katı" />
+                                        <CheckBox fx:id="bk1" text="1" />
+                                        <CheckBox fx:id="bk2" text="2" />
+                                        <CheckBox fx:id="bk3" text="3" />
+                                        <CheckBox fx:id="bk4" text="4" />
+                                        <CheckBox fx:id="bk5" text="5" />
+                                        <CheckBox fx:id="bk6" text="6" />
+                                        <CheckBox fx:id="bk7" text="7" />
+                                        <CheckBox fx:id="bk8" text="8" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Kat Sayısı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="ks1" text="1" />
+                                        <CheckBox fx:id="ks2" text="2" />
+                                        <CheckBox fx:id="ks3" text="3" />
+                                        <CheckBox fx:id="ks4" text="4" />
+                                        <CheckBox fx:id="ks5" text="5" />
+                                        <CheckBox fx:id="ks6" text="6" />
+                                        <CheckBox fx:id="ks7" text="7" />
+                                        <CheckBox fx:id="ks8" text="8" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Isıtma">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="isitmaYOK" text="Yok" />
+                                        <CheckBox fx:id="isitmaSoba" text="Soba" />
+                                        <CheckBox fx:id="isitmaDoğalgazSobasi" text="Doğalgaz Sobası" />
+                                        <CheckBox fx:id="isitmaKatKaloriferi" text="Kat Kaloriferi" />
+                                        <CheckBox fx:id="isitmaMerkezi" text="Merkezi" />
+                                        <CheckBox fx:id="isitmaKombi_dogalgaz" text="Kombi (Doğalgaz)" />
+                                        <CheckBox fx:id="isitmaKombi_elektrik" text="Kombi (Elektrik)" />
+                                        <CheckBox fx:id="isitmaYerden" text="Yerden Isıtma" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Banyo Sayısı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="bs1" text="1" />
+                                        <CheckBox fx:id="bs2" text="2" />
+                                        <CheckBox fx:id="bs3" text="3" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Mutfak">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="MutfakA" text="Açık (Amerikan)" />
+                                        <CheckBox fx:id="MutfakK" text="Kapalı" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Balkon">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="BalkonV" text="Var" />
+                                        <CheckBox fx:id="BalkonY" text="Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Asansör">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="AsansorV" text="Var" />
+                                        <CheckBox fx:id="AsansorY" text="Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Eşyalı">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="EsyaliE" text="Evet" />
+                                        <CheckBox fx:id="EsyaliH" text="Hayır" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Kullanım Durumu">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="kdb" text="Boş" />
+                                        <CheckBox fx:id="kdK" text="Kiracılı" />
+                                        <CheckBox fx:id="kdM" text="Mülk Sahibi" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Site İçerisinde">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="siE" text="Evet" />
+                                        <CheckBox fx:id="siH" text="Hayır" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Tapu Durumu">
+                            <content>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <CheckBox fx:id="tdKatMulkiyeti" text="Kat Mülkiyeti" />
+                                        <CheckBox fx:id="tdHisseliTapu" text="Hisseli Tapu" />
+                                        <CheckBox fx:id="tdArsaTapulu" text="Arsa Tapulu" />
+                                        <CheckBox fx:id="tdYurtDisiTapulu" text="Yurt Dışı Tapulu" />
+                                        <CheckBox fx:id="tdTapuKaydiYok" text="Tapu Kaydı Yok" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                        <TitledPane text="Kimden">
+                            <content>
+                                <fx:define>
+                                    <ToggleGroup fx:id="kimdenToggleGroup" />
+                                </fx:define>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <RadioButton fx:id="kimdenSahibinden" text="Sahibinden" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenInsaatFirmasından" text="İnşaat Firmasından" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenBankadan" text="Bankadan" toggleGroup="$kimdenToggleGroup" />
+                                        <RadioButton fx:id="kimdenTurizmIsletmesinden" text="Turizm İşletmesinden" toggleGroup="$kimdenToggleGroup" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+
+                        <TitledPane text="İlan Tarihi">
+                            <content>
+                                <!-- ToggleGroup Tanımlaması -->
+                                <fx:define>
+                                    <ToggleGroup fx:id="ilanTarihiToggleGroup" />
+                                </fx:define>
+                                <VBox spacing="5">
+                                    <padding>
+                                        <Insets bottom="10" left="10" right="10" top="10" />
+                                    </padding>
+                                    <children>
+                                        <RadioButton fx:id="itS3" text="Son 3 gün içinde" toggleGroup="$ilanTarihiToggleGroup"/>
+                                        <RadioButton fx:id="itS7" text="Son 7 gün içinde" toggleGroup="$ilanTarihiToggleGroup" />
+                                        <RadioButton fx:id="itS15" text="Son 15 gün içinde" toggleGroup="$ilanTarihiToggleGroup" />
+                                        <RadioButton fx:id="itS30" text="Son 30 gün içinde" toggleGroup="$ilanTarihiToggleGroup" />
+                                    </children>
+                                </VBox>
+                            </content>
+                        </TitledPane>
+                    </panes>
+                </Accordion></content></ScrollPane></right>
+</BorderPane>
+
+

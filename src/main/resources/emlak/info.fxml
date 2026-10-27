@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Pos?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane fx:id="infoRoot" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="emlak.InfoController" prefHeight="1000.0" prefWidth="1000.0" stylesheets="@emlakyonetim.css">
+
+    <!-- Üst Başlık Çubuğu -->
+    <top>
+        <HBox alignment="CENTER_RIGHT" spacing="10.0" style="-fx-padding: 10; -fx-background-color: #c8e6c9;">
+            <children>
+                <Button disable="true" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 16px; -fx-font-weight: bold;" text="Bilgi" />
+                <Button fx:id="minimizeButton" onAction="#minimizeWindow" style="-fx-background-color: transparent; -fx-text-fill: black; -fx-font-size: 18px; -fx-font-weight: bold;" text="_" />
+                <Button fx:id="closeButton" onAction="#closeWindow" style="-fx-background-color: transparent; -fx-text-fill: red; -fx-font-size: 16px; -fx-font-weight: bold;" text="X" />
+            </children>
+        </HBox>
+    </top>
+
+    <!-- Ana İçerik -->
+    <center>
+        <ScrollPane fitToWidth="true" fitToHeight="false" style="-fx-padding: 20;">
+            <content>
+                <VBox spacing="15">
+                    <children>
+                        <!-- Resim Bölümü -->
+                        <HBox fx:id="imageRow" spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Resim:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <HBox spacing="10" alignment="CENTER">
+                                <Button fx:id="prevButton" onAction="#showPreviousImage" text="&lt;" />
+                                <ImageView fx:id="resimImageView" fitHeight="300" fitWidth="400" preserveRatio="true" />
+                                <Button fx:id="nextButton" onAction="#showNextImage" text="&gt;" />
+                            </HBox>
+                        </HBox>
+                        <Label fx:id="imageStatusLabel" text="Resim yok" />
+<HBox spacing="10"><Label text="İlan Tarihi:"/><Label fx:id="ilanTarihiLabel"/></HBox><HBox spacing="10"><Label text="İlçe:"/><Label fx:id="ilceLabel"/></HBox>
+<!-- İlan Bilgileri -->
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="İlan Başlığı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="ilanBasligiLabel" text="-" wrapText="true" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Metrekare:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="metrekareLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Oda Sayısı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="odaSayisiLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Fiyat (TL):" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="fiyatLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Adres:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="adresLabel" text="-" wrapText="true" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="İlan Türü:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="ilanTuruLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Kategori:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="kategoriLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Alt Kategori:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="altKategoriLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Bina Yaşı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="binaYasiLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Bulunduğu Kat:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="bulunduguKatLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Kat Sayısı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="katSayisiLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Isıtma Türü:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="isitmaLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Banyo Sayısı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="banyoSayisiLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Mutfak:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="mutfakLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Balkon:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="balkonLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Asansör:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="asansorLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Eşyalı:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="esyaliLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Kullanım Durumu:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="kullanimDurumuLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Site İçerisinde:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="siteIcerisindeLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Tapu Durumu:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="tapuDurumuLabel" text="-" />
+                        </HBox>
+
+                        <HBox spacing="10" alignment="CENTER_LEFT">
+                            <Label text="Kimden:" style="-fx-font-weight: bold; -fx-prefWidth: 150;" />
+                            <Label fx:id="kimdenLabel" text="-" />
+                        </HBox>
+
+
+                    </children>
+                </VBox>
+            </content>
+        </ScrollPane>
+    </center>
+
+
+</BorderPane>
+
+
